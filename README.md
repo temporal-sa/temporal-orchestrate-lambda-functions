@@ -1,8 +1,8 @@
 ## Temporal Sample: Orchestrate Lamdba Functions
 
-TODO -- will be a Temporal version of https://docs.aws.amazon.com/step-functions/latest/dg/sample-lambda-orchestration.html
-TODO -- write workflows
-TODO -- write AWS orchestration code for AWS Lambda
+* TODO -- will be a Temporal version of https://docs.aws.amazon.com/step-functions/latest/dg/sample-lambda-orchestration.html
+* TODO -- write workflows
+* TODO -- write AWS orchestration code for AWS Lambda
 
 ### Configuration (optional if using local Temporal dev server)
 - Copy the `.env_example` file to `.env.development` and change settings to match your temporal installation.
