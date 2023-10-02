@@ -3,7 +3,7 @@ export interface WorkflowParameterObj {
 }
 
 export interface ResultObj {
-    stripeChargeResponse: StripeChargeResponse;
+    result: String;
 }
 
 export interface StateObj {
@@ -11,7 +11,3 @@ export interface StateObj {
     transferState: string;
     workflowStatus?: string;
 }
-
-export type StripeChargeResponse = {
-    chargeId: string;
-  }  

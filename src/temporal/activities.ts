@@ -1,5 +1,3 @@
-import Stripe from 'stripe';
-import { StripeChargeResponse } from './interfaces';
 import { getConfig } from './config';
 import { config } from 'dotenv';
 import { resolve } from 'path';
@@ -13,32 +11,8 @@ config({ path });
 const configObj = getConfig();
 
 export async function createCharge(idempotencyKey: string,
-  amountCents: number): Promise<StripeChargeResponse> {
+  amountCents: number): Promise<string> {
 
-  if (configObj.stripeSecretKey === undefined ||
-    configObj.stripeSecretKey === '') {
-    console.log('Stripe secret key is not set, returning dummy charge ID');
-    return { chargeId: "dummy-charge-ID" };
-  }
-
-  const stripe = new Stripe(configObj.stripeSecretKey, {
-    apiVersion: '2023-08-16',
-  });
-
-  const customer: Stripe.Customer = await stripe.customers.create({
-    source: 'tok_visa'
-  });
-
-  const charge = await stripe.charges.create({
-    amount: amountCents,
-    currency: 'usd',
-    customer: customer.id,
-    description: 'charge'
-  }, {
-    idempotencyKey: idempotencyKey
-  });
-
-  // print Stripe.charge information
-  return { chargeId: charge.id };
+  return "dummy-charge-ID";
 
 }

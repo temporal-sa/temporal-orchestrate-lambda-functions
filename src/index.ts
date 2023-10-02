@@ -85,6 +85,8 @@ app.get('/runWorkflow', async (req: Request, res: Response) => {
     workflowParameterObj.amountCents = 9;
 
     const transferId = await runWorkflow(config, workflowParameterObj);
+    
+    console.log(`Started workflow: ${transferId}`);
 
     res.send({
         transferId: transferId

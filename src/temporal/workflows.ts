@@ -1,16 +1,14 @@
 import {
   proxyActivities, setHandler, sleep, uuid4
 } from '@temporalio/workflow';
-import { ResultObj, StateObj, StripeChargeResponse, WorkflowParameterObj } from './interfaces';
+import { ResultObj, StateObj, WorkflowParameterObj } from './interfaces';
 import { defineQuery } from '@temporalio/workflow';
-import Stripe from 'stripe';
 
 import type * as activities from './activities';
 
 const { createCharge } = proxyActivities<typeof activities>({
   startToCloseTimeout: '5 seconds',
   retry: {
-    nonRetryableErrorTypes: ['StripeInvalidRequestError']
   }
 });
 
@@ -21,7 +19,7 @@ export async function moneyTransferWorkflow(workflowParameterObj: WorkflowParame
 
   let progressPercentage = 25;
   let transferState = "starting";
-  let chargeResult: StripeChargeResponse = { chargeId: "" };
+  let chargeResult = "";
 
   // Query that returns state info to the UI
   setHandler(getStateQuery, () => ({
@@ -47,6 +45,6 @@ export async function moneyTransferWorkflow(workflowParameterObj: WorkflowParame
   progressPercentage = 100;
   transferState = "finished";
 
-  return { stripeChargeResponse: chargeResult };
+  return { result: chargeResult };
 
 }
