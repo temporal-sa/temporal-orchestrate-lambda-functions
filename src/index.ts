@@ -53,6 +53,7 @@ app.get('/serverinfo', (req, res) => {
 // runWorkflow API
 app.get('/', async (req: Request, res: Response) => {
     res.send(
+        `<h1>Temporal Stock Trading Demo</h1> <br/><br/>` +
         `<a href="/runWorkflow">Run Workflow</a> <br/><br/>` +
         `<a href="/serverinfo">Server Config</a>`
     );
@@ -68,9 +69,9 @@ app.get('/runWorkflow', async (req: Request, res: Response) => {
     const workflowUrl = `${getServerUrl(configObj)}/${transactionId}`;
 
     res.send(
-        `Started workflow: <a href="${workflowUrl}" target="_blank">
+        `Started workflow. Check progress at: <a href="${workflowUrl}" target="_blank">
             ${transactionId}</a> <br/><br/>` +
-        `<a href="/approve?id=${transactionId}">Approve</a>`
+        `<a href="/approve?id=${transactionId}">Send Approve Signal</a>`
     );
 });
 
