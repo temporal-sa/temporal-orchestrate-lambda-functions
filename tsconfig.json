@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "sourceRoot": "src",
     "outDir": "out",
     "sourceMap": true,
@@ -9,7 +10,6 @@
 		"allowJs": true,
 		"checkJs": true,
 		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true
 	}

@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "type": "commonjs",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "worker": "nodemon src/temporal/worker.ts",
@@ -20,6 +21,7 @@
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
         "fs-extra": "^11.1.1",
+        "node-fetch-commonjs": "^3.3.2",
         "stripe": "^13.8.0",
         "uuid": "^9.0.1"
     },

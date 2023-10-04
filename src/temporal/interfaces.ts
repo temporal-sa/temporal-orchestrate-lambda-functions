@@ -1,13 +1,12 @@
-export interface WorkflowParameterObj {
-    amountCents: number;
+
+export interface StockPriceResultObj {
+    stock_price: number;
 }
 
-export interface ResultObj {
-    result: String;
-}
-
-export interface StateObj {
-    progressPercentage: number;
-    transferState: string;
-    workflowStatus?: string;
-}
+export interface StockTransaction {
+    id: string;
+    price: string;
+    type: "sell" | "buy";
+    qty: string;
+    timestamp: string;
+  }

@@ -1,5 +1,3 @@
-import { WorkflowParameterObj } from './interfaces'
-
 export interface ConfigObj {
     certPath: string,
     keyPath: string,
@@ -7,7 +5,8 @@ export interface ConfigObj {
     keyContent: string,
     address: string,
     namespace: string,
-    prometheusAddress: string
+    prometheusAddress: string,
+    apiAddress: string,
 }
 
 // function that returns a ConfigObj with input environment variables
@@ -20,14 +19,7 @@ export function getConfig(): ConfigObj {
         address: process.env.ADDRESS || 'localhost:7233',
         namespace: process.env.NAMESPACE || 'default',
         prometheusAddress: process.env.PROMETHEUS_ADDRESS || '',
-    }
-}
-
-
-
-export function initWorkflowParameterObj(): WorkflowParameterObj {
-    return {
-      amountCents: 0
+        apiAddress: process.env.API_ADDRESS || '',
     }
 }
 
