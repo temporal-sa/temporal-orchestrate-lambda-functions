@@ -29,7 +29,7 @@ _(This step is optional because these services are already publicly hosted at th
   - `npm run worker`
 
 #### Start a workflow
-- Go to `http://localhost:3000/runWorkflow`
+- Go to the debug interface: `http://localhost:3000`
 - The workflow will make a stock trading recommendation based on price then wait for an 'approve' signal.
 
 #### (Advanced) Debug/replay Workflow histories with the [Temporal VSCode Extension](https://marketplace.visualstudio.com/items?itemName=temporal-technologies.temporalio)
