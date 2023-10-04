@@ -6,7 +6,9 @@ A Temporal Version of [AWS Step Functions: Lambda orchestration example](https:/
 
 #### Deploy AWS Lambda microservices and APIs (Optional)
 
-The file `.env_example` already contains a deployed URL of Lambda microservices. To deploy on your own URL, [refer to the deployment readme](./deploy/README.md).
+To deploy the demo's Lambda microservices and APIs on your own URL, [refer to the deployment readme](./deploy/README.md).
+
+_(This step is optional because these services are already publicly hosted at the `API_ADDRESS` in `.env_example`)_
 
 #### Configuration
 - Copy the `.env_example` file to `.env.development` and change settings to match your temporal installation.
