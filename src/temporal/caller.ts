@@ -1,11 +1,12 @@
-import { Client, Connection, WorkflowFailedError } from '@temporalio/client';
+import { Client, Connection, WorkflowFailedError, WorkflowNotFoundError } from '@temporalio/client';
 import fs from 'fs-extra';
 import { TASK_QUEUE_WORKFLOW } from './config';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { stockTradingWorkflow } from './workflows';
 import { ConfigObj } from './config';
 import { getCertKeyBuffers } from './certificate_helpers';
 import { getDataConverter } from './data-converter';
+import { approveSignal } from './workflows';
 
 async function createClient(config: ConfigObj): Promise<Client> {
 
@@ -70,5 +71,36 @@ export async function runWorkflow(config: ConfigObj): Promise<String> {
   await client.connection.close();
 
   return transactionId;
+
+}
+
+export async function approveSignalWorkflow(config: ConfigObj, id: string): Promise<void> {
+
+  const client = await createClient(config);
+
+  // start() returns a WorkflowHandle that can be used to await the result
+  const handle = await client.workflow.getHandle(id);
+
+  // don't wait for workflow to finish
+  // let result = await handle.result()
+  // console.log(result); // Hello, Temporal!
+  try {
+    await handle.signal(approveSignal);
+    console.log('Approve signal sent');
+  } catch (e: unknown) { // Explicitly annotate e as unknown
+    if (e instanceof Error) { // Narrow down the type to Error
+      if ('name' in e && e.name === 'WorkflowNotFoundError') {
+        console.log('Caught WorkflowNotFoundError:', e.message);
+      } else {
+        console.log('An unexpected error occurred:', e.message);
+      }
+    } else {
+      console.log('An error of an unknown type occurred:', e);
+    }
+  }
+
+
+
+  await client.connection.close();
 
 }

@@ -11,13 +11,10 @@ const path = process.env.NODE_ENV === 'production'
 
 config({ path });
 
-const configtest = getConfig();
+const configObj = getConfig();
 console.log(process.env.NODE_ENV);
-console.log(configtest.certPath);
 
-// TEMPORARY: Allow CORS for all origins
-import cors from 'cors';
-import { runWorkflow } from "./temporal/caller";
+import { approveSignalWorkflow, runWorkflow } from "./temporal/caller";
 
 // express handler for GET /
 const app = express();
@@ -35,16 +32,13 @@ app.use(express.static(staticFilesPath));
 
 const port = process.env.PORT || 3000;
 
-app.get('/health', (req, res) => {
-    res.send(`OK`);
-});
-
 app.get('/serverinfo', (req, res) => {
 
     const serverconfig = {
-        address: configtest.address,
-        namespace: configtest.namespace,
-        url: ''
+        address: configObj.address,
+        namespace: configObj.namespace,
+        url: '',
+        api: configObj.apiAddress,
     }
 
     // if address ends in .tmprl.cloud:7233
@@ -57,25 +51,30 @@ app.get('/serverinfo', (req, res) => {
 });
 
 // runWorkflow API
-app.get('/runWorkflow', async (req: Request, res: Response) => {
+app.get('/', async (req: Request, res: Response) => {
+    res.send(
+        `<a href="/runWorkflow">Run Workflow</a> <br/><br/>` +
+        `<a href="/serverinfo">Server Config</a>`
+    );
+});
 
-    const configObj = getConfig();
+// runWorkflow API
+app.get('/runWorkflow', async (req: Request, res: Response) => {
 
     const transactionId = await runWorkflow(configObj);
 
     console.log(`Started workflow: ${transactionId}`);
 
-    res.send({
-        transactionId: transactionId
-    });
+    res.send(
+        `Started workflow: ${transactionId} <br/><br/>` +
+        `<a href="/approve?id=${transactionId}">Approve</a>`
+    );
 });
 
-app.get('/testConnect', async (req: Request, res: Response) => {
+app.get('/runBatch', async (req: Request, res: Response) => {
 
     // if GET variable 'n' is an integer then set, otherwise default to 1
     const n = parseInt(req.query.n as string) || 1;
-
-    const configObj = getConfig();
 
     const transactionIds = [];
 
@@ -91,8 +90,19 @@ app.get('/testConnect', async (req: Request, res: Response) => {
     });
 });
 
+app.get('/approve', async (req: Request, res: Response) => {
+
+    const id = req.query.id as string || '';
+
+    await approveSignalWorkflow(configObj, id);
+
+    res.send(
+        `Approved transaction ${id}`
+    );
+});
+
 app.listen(port, () => {
-    const configObj = getConfig();
+
     console.log(`Example app listening at http://localhost:${port}/runWorkflow`);
     console.log(`API location is ${configObj.apiAddress}`);
     console.log(`\nEnsure you run workers with 'npm run worker'`);
