@@ -11,13 +11,6 @@ config({ path });
 
 const configObj = getConfig();
 
-// export async function createCharge(idempotencyKey: string,
-//   amountCents: number): Promise<string> {
-
-//   return "dummy-charge-ID";
-
-// }
-
 export const checkStockPrice = async (): Promise<any> => {
   console.log(`url is ${configObj.apiAddress}checkStockPrice`);
   const requestOptions = {
