@@ -1,6 +1,5 @@
 import * as wf from '@temporalio/workflow';
 import { StockPriceResultObj, StockTransaction } from './interfaces';
-import { defineQuery } from '@temporalio/workflow';
 
 import type * as activities from './activities';
 
@@ -13,7 +12,8 @@ const { checkStockPrice, generateBuySellRecommendation,
 
 export const approveSignal = wf.defineSignal('approve');
 
-/** A workflow that simply calls an activity */
+/** Temporal Version of AWS Step Functions example: 
+ * https://docs.aws.amazon.com/step-functions/latest/dg/sample-lambda-orchestration.html */
 export async function stockTradingWorkflow(): Promise<StockTransaction> {
   let isApproved = false;
 
@@ -48,7 +48,7 @@ export async function stockTradingWorkflow(): Promise<StockTransaction> {
   } else {
     const buyStockData: StockTransaction = await buyStock(stockPrice.stock_price);
     wf.log.info(JSON.stringify(buyStockData));
-    
+
     result = buyStockData;
   }
 
