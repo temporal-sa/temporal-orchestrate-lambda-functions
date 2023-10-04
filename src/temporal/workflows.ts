@@ -28,24 +28,27 @@ export async function stockTradingWorkflow(): Promise<StockTransaction> {
   wf.setHandler(approveSignal, () => void (isApproved = true));
 
   const stockPrice: StockPriceResultObj = await checkStockPrice();
-  wf.log.info(`stockPrice: ${JSON.stringify(stockPrice)}`);
+  wf.log.info(`Retrieved a stock price: ${JSON.stringify(stockPrice)}`);
 
   const buyOrSellRecommendation = await generateBuySellRecommendation(stockPrice.stock_price);
-  wf.log.info(`buyOrSellRecommendation: ${buyOrSellRecommendation}`)
+  wf.log.info(`Got recommendation based on price: ${buyOrSellRecommendation}`)
 
-  wf.log.info('Waiting for approval');
+  wf.log.info('Waiting on human approval for recommendation.');
 
+  // The workflow will block here until an approve signal is received
   await wf.condition(() => isApproved);
-  wf.log.info('Approved');
+  wf.log.info('Recommendation Approved.');
 
   wf.log.info(`${buyOrSellRecommendation}ing stock`);
   if (buyOrSellRecommendation === 'sell') {
     const sellStockData: StockTransaction = await sellStock(stockPrice.stock_price);
     wf.log.info(JSON.stringify(sellStockData));
+
     result = sellStockData;
   } else {
     const buyStockData: StockTransaction = await buyStock(stockPrice.stock_price);
     wf.log.info(JSON.stringify(buyStockData));
+    
     result = buyStockData;
   }
 
