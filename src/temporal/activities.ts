@@ -11,6 +11,7 @@ config({ path });
 
 const configObj = getConfig();
 
+// calls a Lambda function
 export const checkStockPrice = async (): Promise<any> => {
   console.log(`url is ${configObj.apiAddress}checkStockPrice`);
   const requestOptions = {
@@ -21,6 +22,7 @@ export const checkStockPrice = async (): Promise<any> => {
   return response.json();
 };
 
+// calls a Lambda function
 export const generateBuySellRecommendation = async (price: number): Promise<string> => {
   const requestOptions = {
     method: 'POST',
@@ -31,6 +33,7 @@ export const generateBuySellRecommendation = async (price: number): Promise<stri
   return response.text();
 };
 
+// calls a Lambda function
 export const sellStock = async (price: number): Promise<any> => {
   const requestOptions = {
     method: 'POST',
@@ -41,6 +44,7 @@ export const sellStock = async (price: number): Promise<any> => {
   return response.json();
 };
 
+// calls a Lambda function
 export const buyStock = async (price: number): Promise<any> => {
   const requestOptions = {
     method: 'POST',
