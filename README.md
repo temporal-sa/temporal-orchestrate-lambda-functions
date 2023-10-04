@@ -2,7 +2,7 @@
 
 A Temporal Version of [AWS Step Functions: Lambda orchestration example](https://docs.aws.amazon.com/step-functions/latest/dg/sample-lambda-orchestration.html)
 
-![Timeline Image](./timeline.png)
+![Timeline Image](./timelinecrop.png)
 _A Temporal UI timeline view of a workflow execution_
 
 #### Deploy AWS Lambda microservices and APIs (Optional)
