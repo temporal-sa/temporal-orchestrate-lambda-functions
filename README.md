@@ -33,5 +33,5 @@ _(This step is optional because these services are already publicly hosted at th
 - The workflow will make a stock trading recommendation based on price then wait for an 'approve' signal.
 
 #### (Advanced) Debug/replay Workflow histories with the [Temporal VSCode Extension](https://marketplace.visualstudio.com/items?itemName=temporal-technologies.temporalio)
-- Open /server as a VSCode project
+- Open the project root as a VSCode project
 - Run the replayer on a downloaded workflow JSON file
