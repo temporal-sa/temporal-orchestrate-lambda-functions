@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 import { resolve } from 'path';
 import express, { Request, Response } from 'express';
-import { getConfig } from "./temporal/config";
+import { getConfig, getServerUrl } from "./temporal/config";
 import bodyParser from "body-parser";
 import filepath from 'path';
 
@@ -65,29 +65,13 @@ app.get('/runWorkflow', async (req: Request, res: Response) => {
 
     console.log(`Started workflow: ${transactionId}`);
 
+    const workflowUrl = `${getServerUrl(configObj)}/${transactionId}`;
+
     res.send(
-        `Started workflow: ${transactionId} <br/><br/>` +
+        `Started workflow: <a href="${workflowUrl}" target="_blank">
+            ${transactionId}</a> <br/><br/>` +
         `<a href="/approve?id=${transactionId}">Approve</a>`
     );
-});
-
-app.get('/runBatch', async (req: Request, res: Response) => {
-
-    // if GET variable 'n' is an integer then set, otherwise default to 1
-    const n = parseInt(req.query.n as string) || 1;
-
-    const transactionIds = [];
-
-    // run n times
-    for (let i = 0; i < n; i++) {
-        console.log(`run ${i} of ${n}`);
-        const transactionId = await runWorkflow(configObj);
-        transactionIds.push(transactionId);
-    }
-
-    res.send({
-        transactionIds: transactionIds
-    });
 });
 
 app.get('/approve', async (req: Request, res: Response) => {
@@ -96,8 +80,12 @@ app.get('/approve', async (req: Request, res: Response) => {
 
     await approveSignalWorkflow(configObj, id);
 
+    const workflowUrl = `${getServerUrl(configObj)}/${id}`;
+
     res.send(
-        `Approved transaction ${id}`
+        `Approved transaction: <a href="${workflowUrl}" target="_blank">
+        ${id}</a> <br/><br>` +
+        `<a href="/">Home</a> <br/><br/>`
     );
 });
 

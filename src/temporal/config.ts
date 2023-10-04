@@ -23,4 +23,25 @@ export function getConfig(): ConfigObj {
     }
 }
 
+// this is a convenience function and needs to be more robust :)
+export function getServerUrl(config: ConfigObj): string {
+    // if address ends in .tmprl.cloud:7233
+    if (config.address.endsWith('.tmprl.cloud:7233')) {
+        // strip port from address
+        return `https://cloud.temporal.io/namespaces/${config.namespace}/workflows`;
+    }
+    // if server is local then assume http
+    if (config.address.startsWith('localhost') || config.address.startsWith('127.0.0.1')) {
+        if(config.address == 'localhost:7233') {
+            // catering for temporal server start-dev
+            return `http://localhost:8233/namespaces/${config.namespace}/workflows`;
+        }
+        return `http://${config.address}/namespaces/${config.namespace}/workflows`;
+    }
+    // otherwise assume https
+    else {
+        return `https://${config.address}/namespaces/${config.namespace}/workflows`;
+    }
+}
+
 export const TASK_QUEUE_WORKFLOW = 'OrchestrateLambda'

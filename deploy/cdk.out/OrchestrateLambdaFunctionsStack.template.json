@@ -1,0 +1,1406 @@
+{
+ "Resources": {
+  "checkStockPriceFunctionServiceRole2B23F841": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/checkStockPriceFunction/ServiceRole/Resource"
+   }
+  },
+  "checkStockPriceFunction43478A94": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "eb3b0fb59aa97ee0c89ba8929e265a70e10f3d2004abbefbe85699bfa6b049d0.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "checkStockPriceFunctionServiceRole2B23F841",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x"
+   },
+   "DependsOn": [
+    "checkStockPriceFunctionServiceRole2B23F841"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/checkStockPriceFunction/Resource",
+    "aws:asset:path": "asset.eb3b0fb59aa97ee0c89ba8929e265a70e10f3d2004abbefbe85699bfa6b049d0",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "generateBuySellRecommendFunctionServiceRole0E7A4E39": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/generateBuySellRecommendFunction/ServiceRole/Resource"
+   }
+  },
+  "generateBuySellRecommendFunction2D4C5DDA": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "ad5a4bfc5c16e3dfaa986f3aa0028f60e7be1ddded6795e762b0b6d758353c31.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "generateBuySellRecommendFunctionServiceRole0E7A4E39",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x"
+   },
+   "DependsOn": [
+    "generateBuySellRecommendFunctionServiceRole0E7A4E39"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/generateBuySellRecommendFunction/Resource",
+    "aws:asset:path": "asset.ad5a4bfc5c16e3dfaa986f3aa0028f60e7be1ddded6795e762b0b6d758353c31",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "buyStockFunctionServiceRole8D320477": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/buyStockFunction/ServiceRole/Resource"
+   }
+  },
+  "buyStockFunction0533FB08": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "f69c6376289f8a0b240abf694aaf29d4f683f05fb4519428951ae7215b738105.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "buyStockFunctionServiceRole8D320477",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x"
+   },
+   "DependsOn": [
+    "buyStockFunctionServiceRole8D320477"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/buyStockFunction/Resource",
+    "aws:asset:path": "asset.f69c6376289f8a0b240abf694aaf29d4f683f05fb4519428951ae7215b738105",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "sellStockFunctionServiceRole7794C088": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/sellStockFunction/ServiceRole/Resource"
+   }
+  },
+  "sellStockFunctionE2F4FFE8": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "02c536b7ae34462628619842aa18404f474875c8c534f5ffe1fe6a29e466bc28.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "sellStockFunctionServiceRole7794C088",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x"
+   },
+   "DependsOn": [
+    "sellStockFunctionServiceRole7794C088"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/sellStockFunction/Resource",
+    "aws:asset:path": "asset.02c536b7ae34462628619842aa18404f474875c8c534f5ffe1fe6a29e466bc28",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "stockApi24095AF7": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "Stock Trading State Machine"
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Resource"
+   }
+  },
+  "stockApiCloudWatchRole9B57F05C": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/CloudWatchRole/Resource"
+   }
+  },
+  "stockApiAccount3EADF673": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "stockApiCloudWatchRole9B57F05C",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "stockApi24095AF7"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Account"
+   }
+  },
+  "stockApiDeployment83CE4C794fe82b93a3f25d854a5040fc2743bda2": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "Automatically created by the RestApi construct",
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "DependsOn": [
+    "stockApibuyStockOPTIONSC4AD9A1D",
+    "stockApibuyStockPOST5118BF01",
+    "stockApibuyStockD52EE387",
+    "stockApicheckStockPriceGET27906ACB",
+    "stockApicheckStockPriceOPTIONS1CE8EFF0",
+    "stockApicheckStockPriceEE694E4F",
+    "stockApigenerateBuySellRecommendationOPTIONS491B172B",
+    "stockApigenerateBuySellRecommendationPOSTA06FD01C",
+    "stockApigenerateBuySellRecommendationA92A8B69",
+    "stockApisellStockOPTIONS71F44460",
+    "stockApisellStockPOST71EDD195",
+    "stockApisellStockDE334D3D"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Deployment/Resource"
+   }
+  },
+  "stockApiDeploymentStageprod416256A7": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "stockApiDeployment83CE4C794fe82b93a3f25d854a5040fc2743bda2"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    },
+    "StageName": "prod"
+   },
+   "DependsOn": [
+    "stockApiAccount3EADF673"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/DeploymentStage.prod/Resource"
+   }
+  },
+  "stockApicheckStockPriceEE694E4F": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "stockApi24095AF7",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "checkStockPrice",
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/checkStockPrice/Resource"
+   }
+  },
+  "stockApicheckStockPriceGETApiPermissionOrchestrateLambdaFunctionsStackstockApiFF30F879GETcheckStockPrice34A88B52": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "checkStockPriceFunction43478A94",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "stockApi24095AF7"
+       },
+       "/",
+       {
+        "Ref": "stockApiDeploymentStageprod416256A7"
+       },
+       "/GET/checkStockPrice"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/checkStockPrice/GET/ApiPermission.OrchestrateLambdaFunctionsStackstockApiFF30F879.GET..checkStockPrice"
+   }
+  },
+  "stockApicheckStockPriceGETApiPermissionTestOrchestrateLambdaFunctionsStackstockApiFF30F879GETcheckStockPrice50AFC571": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "checkStockPriceFunction43478A94",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "stockApi24095AF7"
+       },
+       "/test-invoke-stage/GET/checkStockPrice"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/checkStockPrice/GET/ApiPermission.Test.OrchestrateLambdaFunctionsStackstockApiFF30F879.GET..checkStockPrice"
+   }
+  },
+  "stockApicheckStockPriceGET27906ACB": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "checkStockPriceFunction43478A94",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "stockApicheckStockPriceEE694E4F"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/checkStockPrice/GET/Resource"
+   }
+  },
+  "stockApicheckStockPriceOPTIONS1CE8EFF0": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Credentials": "'false'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "PassthroughBehavior": "NEVER",
+     "RequestTemplates": {
+      "application/json": "{\"statusCode\": 200}"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true,
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "stockApicheckStockPriceEE694E4F"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/checkStockPrice/OPTIONS/Resource"
+   }
+  },
+  "stockApigenerateBuySellRecommendationA92A8B69": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "stockApi24095AF7",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "generateBuySellRecommendation",
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/generateBuySellRecommendation/Resource"
+   }
+  },
+  "stockApigenerateBuySellRecommendationPOSTApiPermissionOrchestrateLambdaFunctionsStackstockApiFF30F879POSTgenerateBuySellRecommendation6EF4D60F": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "generateBuySellRecommendFunction2D4C5DDA",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "stockApi24095AF7"
+       },
+       "/",
+       {
+        "Ref": "stockApiDeploymentStageprod416256A7"
+       },
+       "/POST/generateBuySellRecommendation"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/generateBuySellRecommendation/POST/ApiPermission.OrchestrateLambdaFunctionsStackstockApiFF30F879.POST..generateBuySellRecommendation"
+   }
+  },
+  "stockApigenerateBuySellRecommendationPOSTApiPermissionTestOrchestrateLambdaFunctionsStackstockApiFF30F879POSTgenerateBuySellRecommendation199E8D11": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "generateBuySellRecommendFunction2D4C5DDA",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "stockApi24095AF7"
+       },
+       "/test-invoke-stage/POST/generateBuySellRecommendation"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/generateBuySellRecommendation/POST/ApiPermission.Test.OrchestrateLambdaFunctionsStackstockApiFF30F879.POST..generateBuySellRecommendation"
+   }
+  },
+  "stockApigenerateBuySellRecommendationPOSTA06FD01C": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "generateBuySellRecommendFunction2D4C5DDA",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "stockApigenerateBuySellRecommendationA92A8B69"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/generateBuySellRecommendation/POST/Resource"
+   }
+  },
+  "stockApigenerateBuySellRecommendationOPTIONS491B172B": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Credentials": "'false'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "PassthroughBehavior": "NEVER",
+     "RequestTemplates": {
+      "application/json": "{\"statusCode\": 200}"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true,
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "stockApigenerateBuySellRecommendationA92A8B69"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/generateBuySellRecommendation/OPTIONS/Resource"
+   }
+  },
+  "stockApibuyStockD52EE387": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "stockApi24095AF7",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "buyStock",
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/buyStock/Resource"
+   }
+  },
+  "stockApibuyStockPOSTApiPermissionOrchestrateLambdaFunctionsStackstockApiFF30F879POSTbuyStock2CAD9A0F": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "buyStockFunction0533FB08",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "stockApi24095AF7"
+       },
+       "/",
+       {
+        "Ref": "stockApiDeploymentStageprod416256A7"
+       },
+       "/POST/buyStock"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/buyStock/POST/ApiPermission.OrchestrateLambdaFunctionsStackstockApiFF30F879.POST..buyStock"
+   }
+  },
+  "stockApibuyStockPOSTApiPermissionTestOrchestrateLambdaFunctionsStackstockApiFF30F879POSTbuyStock06E61F1B": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "buyStockFunction0533FB08",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "stockApi24095AF7"
+       },
+       "/test-invoke-stage/POST/buyStock"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/buyStock/POST/ApiPermission.Test.OrchestrateLambdaFunctionsStackstockApiFF30F879.POST..buyStock"
+   }
+  },
+  "stockApibuyStockPOST5118BF01": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "buyStockFunction0533FB08",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "stockApibuyStockD52EE387"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/buyStock/POST/Resource"
+   }
+  },
+  "stockApibuyStockOPTIONSC4AD9A1D": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Credentials": "'false'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "PassthroughBehavior": "NEVER",
+     "RequestTemplates": {
+      "application/json": "{\"statusCode\": 200}"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true,
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "stockApibuyStockD52EE387"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/buyStock/OPTIONS/Resource"
+   }
+  },
+  "stockApisellStockDE334D3D": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "stockApi24095AF7",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "sellStock",
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/sellStock/Resource"
+   }
+  },
+  "stockApisellStockPOSTApiPermissionOrchestrateLambdaFunctionsStackstockApiFF30F879POSTsellStock30E996A9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "sellStockFunctionE2F4FFE8",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "stockApi24095AF7"
+       },
+       "/",
+       {
+        "Ref": "stockApiDeploymentStageprod416256A7"
+       },
+       "/POST/sellStock"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/sellStock/POST/ApiPermission.OrchestrateLambdaFunctionsStackstockApiFF30F879.POST..sellStock"
+   }
+  },
+  "stockApisellStockPOSTApiPermissionTestOrchestrateLambdaFunctionsStackstockApiFF30F879POSTsellStock31CD956E": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "sellStockFunctionE2F4FFE8",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "stockApi24095AF7"
+       },
+       "/test-invoke-stage/POST/sellStock"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/sellStock/POST/ApiPermission.Test.OrchestrateLambdaFunctionsStackstockApiFF30F879.POST..sellStock"
+   }
+  },
+  "stockApisellStockPOST71EDD195": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "sellStockFunctionE2F4FFE8",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "stockApisellStockDE334D3D"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/sellStock/POST/Resource"
+   }
+  },
+  "stockApisellStockOPTIONS71F44460": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Credentials": "'false'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "PassthroughBehavior": "NEVER",
+     "RequestTemplates": {
+      "application/json": "{\"statusCode\": 200}"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true,
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "stockApisellStockDE334D3D"
+    },
+    "RestApiId": {
+     "Ref": "stockApi24095AF7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/stockApi/Default/sellStock/OPTIONS/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQzU7DMBCEn6V3ZyEgJHpMi7jxo/IAkesswUlsR9k1VRXl3Vk7QOE036zWo1nfwHYL5UafqDBNXwz2CPMba9MrGdXzoN2x0bUPDXYEz1keozdsg1dWO5gPYUC1f/dJF0W3tSZCJqiSiIddND3yThOqNQ1mWf8NEX7FyVkicYvSo20140mfJRqJq9Hm9AtWxoToWT3gOISzQ0GZ/nFSv82VVpCnIU4Gc4Mf85258hPyR2jSaKVluezlM1KQ9W3aeIk8Rv73XHgffGM5H5C+Cjq6+izvobyD601H1haTNLYO4bDqF7OHCYR2AQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "OrchestrateLambdaFunctionsStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "stockApiEndpoint893DB24E": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "stockApi24095AF7"
+      },
+      ".execute-api.",
+      {
+       "Ref": "AWS::Region"
+      },
+      ".",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "stockApiDeploymentStageprod416256A7"
+      },
+      "/"
+     ]
+    ]
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
